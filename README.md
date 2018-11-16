@@ -1,0 +1,2 @@
+# openlotto
+Lottery Reimagined
