@@ -1,0 +1,51 @@
+{
+  "name": "openlotto",
+  "version": "1.0.0",
+  "description": "Lottery Reimagined",
+  "main": "index.ts",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "envalid": "^4.1.4",
+    "express": "^4.16.4",
+    "express-mate": "^1.5.0",
+    "helmet": "^3.15.0",
+    "jsonwebtoken": "^8.4.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.3.12",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/compression": "0.0.36",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/cors": "^2.8.4",
+    "@types/dotenv": "^6.1.0",
+    "@types/express": "^4.16.0",
+    "@types/helmet": "0.0.42",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/method-override": "0.0.31",
+    "@types/mongoose": "^5.3.1",
+    "@types/node": "^10.12.9",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "start": "ts-node ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasraydeniscool/openlotto.git"
+  },
+  "author": "Thomas Rayden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomasraydeniscool/openlotto/issues"
+  },
+  "homepage": "https://github.com/thomasraydeniscool/openlotto#readme"
+}
