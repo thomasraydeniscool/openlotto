@@ -34,15 +34,15 @@ UserSchema.pre('save', async function (this: IUser) {
   }
 });
 
-UserSchema.path('username').validate(async function (this: IUserModel, username: string) {
-  const match = await this.find({ username });
+UserSchema.path('username').validate(async function (this: IUser, username: string) {
+  const match = await this.model('User').find({ username });
   if (match.length) {
     return false;
   }
   return true;
 }, 'Username is already taken.');
 
-UserSchema.path('username').validate(async function(this: IUserModel, username: string) {
+UserSchema.path('username').validate(async function(this: IUser, username: string) {
   if (RESERVED_WORDS.includes(username)) {
     return false;
   }

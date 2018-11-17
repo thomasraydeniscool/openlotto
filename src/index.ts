@@ -1,5 +1,5 @@
-import * as winston from 'winston';
-import * as mongoose from 'mongoose';
+import winston from 'winston';
+import mongoose from 'mongoose';
 
 import { env } from './config/environment';
 import App from './config/app';
