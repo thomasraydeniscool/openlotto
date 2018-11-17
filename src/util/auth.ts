@@ -7,6 +7,14 @@ import env from '../config/environment';
 import User from '../api/v1/users/user.model';
 import { IUser } from '../api/v1/users/user.types';
 
+export interface IAuthPackage {
+  id: string;
+  username: string;
+  tokens: number;
+  token: string;
+  expiration: number;
+}
+
 /**
  * Generate an authentication token which can be sent to the client to
  * verify future requests.
@@ -22,7 +30,7 @@ export const generateToken = (data: { id: string, username: string }) =>
 export const packageAuth = (
   user: IUser,
   expiration = Date.now() + env.TOKEN_EXPIRATION
-) => {
+): IAuthPackage => {
   return {
     id: user.id,
     username: user.username,
@@ -47,13 +55,13 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers || !req.headers.authorization) {
     throw new ApiUnauthorized(res);
   }
-  let data;
+  let data: IAuthPackage;
   try {
     data = decodeToken(req.headers.authorization.slice(7));
   } catch (err) {
     throw new ApiUnauthorized(res);
   }
-  const user = await User.findById(data._id);
+  const user = await User.findById(data.id);
   if (!user) {
     throw new ApiUnauthorized(res);
   }
