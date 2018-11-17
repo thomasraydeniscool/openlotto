@@ -45,7 +45,7 @@ app.setup();
 
 const server = new http.Server(app.instance);
 
-const io = socket(server);
+export const io = socket(server);
 
 checkActiveDraw().then(() => {
   /**

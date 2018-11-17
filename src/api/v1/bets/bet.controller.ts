@@ -1,6 +1,7 @@
 import { ApiSuccess, ApiError } from 'express-mate';
 import { Response, Request } from 'express';
 import Bet from './bet.model';
+import { io } from '../../..';
 
 export const createBet = async (req: Request, res: Response) => {
   const { body, user } = req as any;
@@ -25,6 +26,8 @@ export const createBet = async (req: Request, res: Response) => {
    */
   user.tokens -= bet.amount;
   await user.save();
+
+  io.emit('new bet', bet, { for: 'everyone' });
 
   return new ApiSuccess(res, bet);
 };
