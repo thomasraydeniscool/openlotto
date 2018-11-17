@@ -1,5 +1,7 @@
 import winston from 'winston';
 import mongoose from 'mongoose';
+import http from 'http';
+import socket from 'socket.io';
 
 import { env } from './config/environment';
 import App from './config/app';
@@ -41,6 +43,10 @@ const app = new App([v1]);
 
 app.setup();
 
+const server = new http.Server(app.instance);
+
+const io = socket(server);
+
 checkActiveDraw().then(() => {
   /**
    * Make sure there is an active lottery draw
@@ -48,8 +54,8 @@ checkActiveDraw().then(() => {
    */
   scheduleCronJobs();
   // Start API
-  app.start(env.PORT, () => {
-    winston.info(`Server started on port ${env.PORT}`);
+  server.listen(env.PORT, () => {
+    winston.info('Listening on *:3000');
   });
 });
 
