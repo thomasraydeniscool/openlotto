@@ -65,7 +65,8 @@ DrawSchema.statics.amount = function(this: IDrawModel, drawId: string) {
 
 DrawSchema.statics.number = function(this: IDrawModel) {
   return this.find().sort('-createdAt').exec().then((draws) => {
-    return draws.length + 1;
+    // make sure to at least return the number 1
+    return Math.max(1, draws.length + 1);
   });
 }
 

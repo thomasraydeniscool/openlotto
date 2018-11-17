@@ -1,7 +1,6 @@
 import { Document, Model } from 'mongoose';
 
 import { IBet } from '../bets/bet.types';
-import { IUser } from '../users/user.types';
 
 export interface IDraw extends Document {
   number: number;

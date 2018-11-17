@@ -9,7 +9,7 @@ export const checkActiveDraw = async () => {
   });
   if (!check.length) {
     await Draw.create({
-      number: Draw.number(),
+      number: await Draw.number(),
       start: DateTime.local().toJSDate(),
       end: DateTime.local()
         .plus({ hours: 1 })
