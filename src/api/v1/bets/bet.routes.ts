@@ -1,20 +1,17 @@
 import { Router, RequestType } from 'express-mate';
 import { IEndpoint } from '../../../config/app';
-import { register, login } from './user.controller';
+import { createBet } from './bet.controller';
+import { auth } from '../../../util/auth';
 
 const POST = Router.createRoutes(RequestType.POST, [
   {
-    path: '/login',
-    steps: [login]
-  },
-  {
-    path: '/register',
-    steps: [register]
-  },
+    path: '/',
+    steps: [auth, createBet]
+  }
 ]);
 
 const router = new Router(POST);
 
-const endpoint: IEndpoint = { path: '/users', router: router.routes };
+const endpoint: IEndpoint = { path: '/bets', router: router.routes };
 
 export default endpoint;

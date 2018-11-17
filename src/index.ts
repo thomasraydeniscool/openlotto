@@ -5,6 +5,8 @@ import { env } from './config/environment';
 import App from './config/app';
 
 import v1 from './api/v1';
+import { checkActiveDraw } from './api/v1/draws/draw.func';
+import scheduleCronJobs from './config/cron';
 
 /**
  * Connect to the mongodb database using
@@ -39,6 +41,15 @@ const app = new App([v1]);
 
 app.setup();
 
-app.start(env.PORT, () => {
-  winston.info(`Server started on port ${env.PORT}`);
+checkActiveDraw().then(() => {
+  /**
+   * Make sure there is an active lottery draw
+   * before the server is started
+   */
+  scheduleCronJobs();
+  // Start API
+  app.start(env.PORT, () => {
+    winston.info(`Server started on port ${env.PORT}`);
+  });
 });
+

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { ApiUnauthorized } from 'express-mate';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { NextFunction } from 'connect';
 
 import env from '../config/environment';
@@ -43,7 +43,7 @@ export const decodeToken = (token: string): any => jwt.verify(token, env.TOKEN_S
  * If if succeeds; set the request.user property with the authenticated user's
  * object.
  */
-export const auth = async (req: any, res: Response, next: NextFunction) => {
+export const auth = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers || !req.headers.authorization) {
     throw new ApiUnauthorized(res);
   }
@@ -57,6 +57,6 @@ export const auth = async (req: any, res: Response, next: NextFunction) => {
   if (!user) {
     throw new ApiUnauthorized(res);
   }
-  req.user = user;
+  (req as any).user = user;
   next();
 };

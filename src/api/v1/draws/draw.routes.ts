@@ -1,12 +1,12 @@
 import { Router, RequestType } from 'express-mate';
-import { getDraws } from './draw.controller';
+import { getActiveDraw } from './draw.controller';
 import { IEndpoint } from '../../../config/app';
 
 const GET = Router.createRoutes(RequestType.GET, [
   {
-    path: '/',
+    path: '/active',
     steps: [
-      getDraws
+      getActiveDraw
     ]
   }
 ]);
