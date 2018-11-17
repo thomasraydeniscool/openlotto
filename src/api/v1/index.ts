@@ -3,10 +3,12 @@ import { IEndpoint } from '../../config/app';
 
 import draws from './draws/draw.routes';
 import users from './users/user.routes';
+import bets from './bets/bet.routes';
 
 export const v1: any = {
   draws,
-  users
+  users,
+  bets
 };
 
 const routes: Router = e.Router();
