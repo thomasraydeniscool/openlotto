@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import User from './user.model';
-import { ApiSuccess, ApiNotFound, ApiUnauthorized, ApiError } from 'express-mate';
+import { ApiSuccess, ApiError } from 'express-mate';
 import { packageAuth } from '../../../util/auth';
 
 export const register = async (req: Request, res: Response) => {

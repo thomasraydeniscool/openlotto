@@ -2,6 +2,7 @@ import e from 'express';
 import cookieParser from 'cookie-parser';
 import compress from 'compression';
 import methodOverride from 'method-override';
+import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import cors from 'cors';
 import { ApiNotFound } from 'express-mate';
@@ -63,6 +64,9 @@ export class App {
     this.app.use(compress());
     this.app.use(methodOverride());
     this.app.use(helmet());
+    this.app.use(bodyParser.json({ limit: '50mb' }));
+    this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+    this.app.enable('trust proxy');
 
     /**
      * Custom Middleware

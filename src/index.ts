@@ -10,13 +10,13 @@ import v1 from './api/v1';
  * Connect to the mongodb database using
  * the mongoose library.
  */
-// mongoose.connect(
-//   env.MONGO_URI,
-//   { useNewUrlParser: true }
-// );
-// mongoose.connection.on('error', err => {
-//   throw err;
-// });
+mongoose.connect(
+  env.DATABASE,
+  { useNewUrlParser: true }
+);
+mongoose.connection.on('error', err => {
+  throw err;
+});
 
 /**
  * Setup logger

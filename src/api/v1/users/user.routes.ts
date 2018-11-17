@@ -29,6 +29,6 @@ const POST = Router.createRoutes(RequestType.POST, [
 
 const router = new Router(GET, PATCH, POST);
 
-const endpoint: IEndpoint = { path: '/user', router: router.routes };
+const endpoint: IEndpoint = { path: '/users', router: router.routes };
 
 export default endpoint;
