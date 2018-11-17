@@ -2,10 +2,12 @@ import { Request, Response } from 'express';
 import User from './user.model';
 import { ApiSuccess, ApiError } from 'express-mate';
 import { packageAuth } from '../../../util/auth';
+import { TOKEN_GIFT } from './user.const';
 
 export const register = async (req: Request, res: Response) => {
   const { body } = req; 
   const user = new User(body);
+  user.tokens = TOKEN_GIFT * 2;
   await user.save();
   return new ApiSuccess(res, packageAuth(user));
 };
