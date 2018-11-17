@@ -4,6 +4,7 @@ import { IBet } from '../bets/bet.types';
 import { IUser } from '../users/user.types';
 
 export interface IDraw extends Document {
+  number: number;
   active: boolean;
   start: Date;
   end: Date;
@@ -14,4 +15,5 @@ export interface IDraw extends Document {
 
 export interface IDrawModel extends Model<IDraw> {
   amount: (drawId: string) => Promise<number>;
+  number: () => Promise<number>;
 }

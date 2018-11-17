@@ -7,5 +7,5 @@ export interface IUser extends Document {
 }
 
 export interface IUserModel extends Model<IUser> {
-  checkPassword: (userId: string, password: string) => boolean;
+  checkPassword: (userId: string, password: string) => Promise<boolean>;
 }

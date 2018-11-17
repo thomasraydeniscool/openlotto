@@ -2,28 +2,45 @@ import { Schema, model, SchemaTypes } from 'mongoose';
 import { IDraw, IDrawModel } from './draw.types';
 import { IBet } from '../bets/bet.types';
 
-const DrawSchema = new Schema({
-  active: {
-    type: Boolean,
-    required: true,
-    default: true
+const DrawSchema = new Schema(
+  {
+    number: {
+      type: Number,
+      required: true,
+      default: 0,
+      min: 0,
+    },
+    active: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
+    start: {
+      type: Date,
+      required: true
+    },
+    end: {
+      type: Date,
+      required: true
+    },
+    amount: {
+      type: Number
+    },
+    winner: {
+      type: SchemaTypes.ObjectId,
+      ref: 'Bet'
+    }
   },
-  start: {
-    type: Date,
-    required: true
-  },
-  end: {
-    type: Date,
-    required: true
-  },
-  amount: {
-    type: Number
-  },
-  winner: {
-    type: SchemaTypes.ObjectId,
-    ref: 'Bet'
+  {
+    timestamps: true,
+    toJSON: {
+      getters: true
+    },
+    toObject: {
+      getters: true
+    }
   }
-});
+);
 
 DrawSchema.virtual('bets', {
   ref: 'Bet',
@@ -45,6 +62,12 @@ DrawSchema.statics.amount = function(this: IDrawModel, drawId: string) {
       return amount;
     });
 };
+
+DrawSchema.statics.number = function(this: IDrawModel) {
+  return this.find().sort('-createdAt').exec().then((draws) => {
+    return draws.length + 1;
+  });
+}
 
 export const Draw = model<IDraw, IDrawModel>('Draw', DrawSchema);
 

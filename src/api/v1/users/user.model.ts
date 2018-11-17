@@ -23,6 +23,7 @@ const UserSchema = new Schema(
     }
   },
   {
+    timestamps: true,
     toJSON: {
       getters: true
     },
@@ -69,7 +70,7 @@ UserSchema.statics.checkPassword = function(
   return this.findById(userId)
     .select('+password')
     .exec()
-    .then((user) => {
+    .then(user => {
       if (user) {
         return bcrypt.compare(password, user.password);
       }

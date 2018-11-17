@@ -1,0 +1,1 @@
+export const TOKEN_GIFT = 1000;
