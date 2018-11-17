@@ -4,6 +4,11 @@ import { ApiSuccess, ApiError } from 'express-mate';
 import { packageAuth } from '../../../util/auth';
 import { TOKEN_GIFT } from './user.const';
 
+export const account = async (req: Request, res: Response) => {
+  const { user } = req as any;
+  return new ApiSuccess(res, packageAuth(user));
+};
+
 export const register = async (req: Request, res: Response) => {
   const { body } = req; 
   const user = new User(body);
