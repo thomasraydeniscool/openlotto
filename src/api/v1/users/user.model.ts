@@ -44,7 +44,8 @@ UserSchema.path('username').validate(async function(
   username: string
 ) {
   const match = await this.model('User').find({ username });
-  if (match.length) {
+  const filtered = match.filter((user) => user._id !== this._id);
+  if (filtered.length) {
     return false;
   }
   return true;
