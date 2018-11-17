@@ -40,7 +40,7 @@ BetSchema.statics.winner = function(this: IBetModel, drawId: string) {
     .then(bets => {
       const weighted: IBet[] = [];
       bets.forEach(bet => {
-        const amount = Math.abs(bet.chance * 100);
+        const amount = Math.floor(bet.chance * 100);
         Array.from(Array(amount).keys()).forEach(() => {
           weighted.push(bet);
         });
