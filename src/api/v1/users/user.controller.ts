@@ -3,7 +3,7 @@ import User from './user.model';
 import { ApiSuccess, ApiNotFound, ApiUnauthorized, ApiError } from 'express-mate';
 import { packageAuth } from '../../../util/auth';
 
-export const createAccount = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
   const { body } = req; 
   const user = new User(body);
   await user.save();

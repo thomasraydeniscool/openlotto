@@ -1,6 +1,6 @@
 import { Router, RequestType } from 'express-mate';
 import { IEndpoint } from '../../../config/app';
-import { createAccount, login } from './user.controller';
+import { register, login } from './user.controller';
 
 const GET = Router.createRoutes(RequestType.GET, [
   {
@@ -22,8 +22,8 @@ const POST = Router.createRoutes(RequestType.POST, [
     steps: [login]
   },
   {
-    path: '/create-account',
-    steps: [createAccount]
+    path: '/register',
+    steps: [register]
   },
 ]);
 
