@@ -53,7 +53,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
   } catch (err) {
     throw new ApiUnauthorized(res);
   }
-  const user = await User.findById(data.id);
+  const user = await User.findById(data._id);
   if (!user) {
     throw new ApiUnauthorized(res);
   }

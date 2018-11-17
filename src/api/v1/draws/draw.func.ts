@@ -22,9 +22,9 @@ export const checkFinishedDraws = async () => {
   const check = await Draw.find({ active: true, end: { $lte: DateTime.local() } });
   await check.forEach(async (draw) => {
     draw.active = false;
-    draw.amount = await Draw.amount(draw.id);
-    draw.winner = await Bet.winner(draw.id);
-    await rewardWinner(draw.id);
+    draw.amount = await Draw.amount(draw._id);
+    draw.winner = await Bet.winner(draw._id);
+    await rewardWinner(draw._id);
     await draw.save();
   }, Promise.resolve);
   await checkActiveDraw();

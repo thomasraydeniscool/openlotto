@@ -18,7 +18,7 @@ export const login = async (req: Request, res: Response) => {
   if (!user) {
     throw new ApiError(res, 'No account found with the username.');
   }
-  const check = await User.checkPassword(user.id, body.password);
+  const check = await User.checkPassword(user._id, body.password);
   if (check === true) {
     return new ApiSuccess(res, packageAuth(user));
   } else {

@@ -6,7 +6,7 @@ export const createBet = async (req: Request, res: Response) => {
   const { body, user } = req as any;
   const bet = new Bet({ ...body, user });
   bet.amount = 100;
-  bet.chance = await Bet.chance(bet.draw.id);
+  bet.chance = await Bet.chance(bet.draw._id);
   await bet.save();
   return new ApiSuccess(res, bet);
 };
