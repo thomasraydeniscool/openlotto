@@ -2,7 +2,6 @@
   "name": "openlotto",
   "version": "1.0.0",
   "description": "Lottery Reimagined",
-  "main": "index.ts",
   "dependencies": {
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
@@ -43,7 +42,9 @@
     "typescript": "^3.1.6"
   },
   "scripts": {
-    "start": "ts-node ./src"
+    "postinstall": "tsc",
+    "start": "ts-node ./src",
+    "deploy": "node ./dist"
   },
   "repository": {
     "type": "git",
