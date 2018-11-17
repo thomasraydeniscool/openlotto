@@ -43,8 +43,8 @@
   },
   "scripts": {
     "postinstall": "tsc",
-    "start": "ts-node ./src",
-    "deploy": "node ./dist"
+    "dev": "ts-node ./src",
+    "start": "node ./dist"
   },
   "repository": {
     "type": "git",
