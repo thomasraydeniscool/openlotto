@@ -1,2 +1,2 @@
 # openlotto
-Lottery Reimagined
+Lottery Re-imagined #24hrstartup
