@@ -4,7 +4,7 @@
     <p>OpenLotto is a lottery that you will <strong>actually</strong> win. In a standard lottery on average you have your odds of winning are<br><strong>1 in 4,000,000,000</strong>. With OpenLotto you can get up to a <strong>11%</strong> chance of winning.</p>
     <h2>How does it work?</h2>
     <p>A new draw is created every hour, each draw starts at zero.
-      Then players are given the oppotinty to bet on the draw for a chance to win the whole pot.</p>
+      Then players are given the opportunity to bet on the draw for a chance to win the whole pot.</p>
     <p>When a player makes a bet the tokens staked are added the the price pot. The more players, the more winnings.</p>
     <h3>Why would I make a bet if the draw is at zero?</h3>
     <p>A single standard bet has a 1% chance of winning. When a draw starts there is a bonus to early players up to 10% on top of the standard bet.</p>
